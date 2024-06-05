@@ -22,3 +22,27 @@ class MainActivity : ComponentActivity() {
 fun AppAndroidPreview() {
     App()
 }
+@Composable
+fun  CalcView(){
+
+}
+@Composable
+fun CalcRow(){
+
+}
+@Composable
+fun CalcDisplay(){
+
+}
+@Composable
+fun CalcNumericButton(){
+
+}
+@Composable
+fun CalcOperationButton(){
+
+}
+@Composable
+fun CalcEqualsButton(){
+
+}
