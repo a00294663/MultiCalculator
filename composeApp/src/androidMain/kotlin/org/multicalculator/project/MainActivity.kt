@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
@@ -49,7 +50,7 @@ fun CalcOperationButton(){
 }
 @Composable
 fun CalcEqualsButton(display: MutableState<String>){
-  Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(4.dp)) {
-
+  Button(onClick = { display.value= "0"}, modifier = Modifier.padding(4.dp)) {
+   Text("=")
   }
 }
