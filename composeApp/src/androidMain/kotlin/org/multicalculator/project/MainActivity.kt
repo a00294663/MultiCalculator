@@ -4,7 +4,11 @@ import App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.magnifier
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -33,15 +37,40 @@ fun  CalcView(){
 
 }
 @Composable
-fun CalcRow(){
+fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
+    val endNum = startNum + numButtons
+    Row(
+        modifier = Modifier
+            .padding(0.dp)
+            .fillMaxWidth()
+    ) {
+        for (i in 0 until numButtons) {
+            //val number = startNum + i
+            CalcNumericButton(i, display)
+        }
+    }
+}
+
+
+@Composable
+fun CalcDisplay(display:MutableState<String> ){
 
 }
-@Composable
-fun CalcDisplay(){
 
-}
+
 @Composable
-fun CalcNumericButton(){
+fun CalcNumericButton(number: Int,display: MutableState<String>){
+    Button(onClick ={
+        if (display.value == "0") {
+            display.value = number.toString()
+        } else {
+            display.value += number.toString()
+        }
+    },  modifier= Modifier.padding(4.dp)) {Text(text = number.toString())
+    Text(text = number.toString())
+
+        
+    }
 
 }
 @Composable
