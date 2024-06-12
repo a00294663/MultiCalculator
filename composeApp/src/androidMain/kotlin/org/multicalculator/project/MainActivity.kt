@@ -53,20 +53,14 @@ fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
 
 
 @Composable
-fun CalcDisplay(display:MutableState<String> ){
+fun CalcDisplay(display: MutableState<String> ){
 
 }
 
 
 @Composable
-fun CalcNumericButton(number: Int,display: MutableState<String>){
-    Button(onClick ={
-        if (display.value == "0") {
-            display.value = number.toString()
-        } else {
-            display.value += number.toString()
-        }
-    },  modifier= Modifier.padding(4.dp)) {Text(text = number.toString())
+fun CalcNumericButton(number: Int, display: MutableState<String>){
+    Button(onClick = { display.value+=number},  modifier= Modifier.padding(4.dp)) {Text(text = number.toString())
     Text(text = number.toString())
 
         
