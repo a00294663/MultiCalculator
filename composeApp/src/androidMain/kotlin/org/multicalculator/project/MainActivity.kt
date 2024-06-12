@@ -36,71 +36,73 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-   // App()
+     App()
     CalcView()
 }
 @Composable
 fun  CalcView(){
     val displayText = remember { mutableStateOf("0") }
-    Column(
-        modifier = Modifier
-            .background(Color.LightGray)
-    ) {
-        Row { CalcDisplay(displayText) }
-        Row {
-            Column {
-                for (i in 7 downTo 1 step 3) {
-                    CalcRow(display = displayText, startNum = i, numButtons = 3)
+
+    Column(modifier=Modifier.background(Color.LightGray)){
+        Row(){
+            CalcDisplay(displayText)
+        }
+        Row(){
+            Column(){
+                for(i in 7 downTo 1 step 3){
+                    CalcRow(display= displayText, startNum = i, numButtons = 3)
                 }
-                Row {
+                Row(){
                     CalcNumericButton(number = 0, display = displayText)
                     CalcEqualsButton(display = displayText)
                 }
-
             }
-            Column {
+            Column(){
                 CalcOperationButton(operation = "+", display = displayText)
                 CalcOperationButton(operation = "-", display = displayText)
                 CalcOperationButton(operation = "*", display = displayText)
                 CalcOperationButton(operation = "/", display = displayText)
+
             }
         }
+
     }
 }
 @Composable
-fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
-    val endNum = startNum + numButtons
-    Row(
-        modifier = Modifier.padding(0.dp)
-    ) {
-        for (i in 0 until numButtons) {
-            //val number = startNum + i
+fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int){
+    val endNum : Int = startNum + numButtons
+
+    Row(Modifier.padding(0.dp)){
+        for(i in startNum..<endNum){
             CalcNumericButton(i, display)
         }
     }
 }
 @Composable
-fun CalcDisplay(display: MutableState<String> ){
-   Text(text = display.value, modifier = Modifier
-       .height(50.dp)
-       .padding(0.dp)
-       .fillMaxWidth())
+fun CalcDisplay(display: MutableState<String>){
+    Text(text = display.value,
+        modifier = Modifier.height(50.dp)
+            .padding(5.dp)
+            .fillMaxWidth())
 }
 @Composable
-fun CalcNumericButton(number: Int, display: MutableState<String>){
-    Button(onClick = { display.value+=number},  modifier= Modifier.padding(4.dp)) {Text(text = number.toString())
-    Text(text = number.toString())
+fun CalcNumericButton(number: Int, display :MutableState<String>){
+    Button(onClick = { display.value += number.toString() },
+        modifier = Modifier.padding(4.dp)){
+        Text(text = number.toString())
+        //Text(text = number.toString())
     }
 }
 @Composable
 fun CalcOperationButton(operation: String, display: MutableState<String>){
-    Button(onClick = { /*TODO*/ }, modifier= Modifier.padding(4.dp)) {
-     Text(text=operation)
+    Button(onClick = { }, modifier = Modifier.padding(4.dp)) {
+        Text(text = operation)
     }
 }
 @Composable
 fun CalcEqualsButton(display: MutableState<String>){
-  Button(onClick = { display.value= "0"}, modifier = Modifier.padding(4.dp)) {
-   Text("=")
-  }
+    Button(onClick = { display.value = "0"},
+        modifier = Modifier.padding(4.dp)) {
+        Text(text= "=")
+    }
 }
