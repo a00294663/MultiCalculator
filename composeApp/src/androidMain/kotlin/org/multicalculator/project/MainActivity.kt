@@ -54,7 +54,8 @@ fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
 
 @Composable
 fun CalcDisplay(display: MutableState<String> ){
-
+   Text(text = display.value, modifier = Modifier.height(50.dp).
+   padding(0.dp).fillMaxWidth())
 }
 
 
